@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'frigga.core'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +76,7 @@ WSGI_APPLICATION = 'frigga.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'core': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'conformidade',
         'USER': 'root',
