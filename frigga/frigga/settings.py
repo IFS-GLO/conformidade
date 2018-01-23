@@ -56,7 +56,7 @@ ROOT_URLCONF = 'frigga.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frigga', 'core', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'frigga.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'core': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'conformidade',
         'USER': 'root',
@@ -102,5 +102,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frigga', 'core', 'static')
+]
 
 STATIC_URL = '/static/'
