@@ -1,0 +1,134 @@
+{% load static %}
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="{{ head_title }} — Portal de Vulnerabilidades | IFS — Instituto Federal de Sergipe">
+    <meta name="author" content="Raphael Fontes - CTI Glória">
+    <meta name="keyword"
+          content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>Conformidades | IFS</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/all.min.css' %}">
+
+    <!-- Main styles for this application -->
+
+    {% block custom_css %}{% endblock %}
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler sidebar-minimizer d-md-down-none" type="button">☰</button>
+    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px;">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                <span class="d-md-down-none">{{ user.first_name }}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Sair</a>
+            </div>
+        </li>
+    </ul>
+
+</header>
+
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'panel:index' %}"><i class="fa fa-tachometer"></i> Painel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'panel:funds' %}"><i class="fa fa-archive"></i> Fundos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'panel:units' %}"><i class="fa fa-puzzle-piece"></i> Unidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'panel:species' %}"><i class="fa fa-th-large"></i> Espécies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'panel:index' %}"><i class="fa fa-check-square"></i> Conformidades</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+
+            <!-- Breadcrumb Menu-->
+            <li class="breadcrumb-menu d-md-down-none">
+                <div class="btn-group" role="group" aria-label="Button group">
+                    <a class="btn" href="#"><i class="icon-speech"></i></a>
+                    <a class="btn" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+                    <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+                </div>
+            </li>
+        </ol>
+
+        <div class="container-fluid">
+
+            <div class="animated fadeIn">
+                {% block content %} {% endblock %}
+            </div>
+
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+
+</div>
+
+<footer class="app-footer">
+    <a href="http://www.ifs.edu.br">IFS - Instituto Federal de Sergipe</a>.
+    <span class="float-right"><a href="http://gloria.ifs.edu.br">CTI - Glória</a>
+        </span>
+</footer>
+
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    toastr.success('{{ message }}');
+                {% else %}
+                    toastr.error('{{ message }}');
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    });
+</script>
+
+{% block custom_js %} {% endblock %}
+
+</body>
+
+</html>
